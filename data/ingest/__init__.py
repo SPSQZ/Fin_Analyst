@@ -1,0 +1,1 @@
+"""Phase 4 document chunking and embedding pipeline."""
