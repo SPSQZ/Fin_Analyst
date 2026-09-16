@@ -1,23 +1,77 @@
-# Environments / secrets
+# ==========================================
+# Environments & Secrets
+# ==========================================
 .env
 .env.*
+*.env
 !.env.example
+!.env.*.example
 
-# Python
+# Private keys, certificates, cloud tokens
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+service_account*.json
+service-account*.json
+credentials.json
+client_secret*.json
+token.json
+.supabase/
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosv
+*.sln.docstates
+
+# VS Code & JetBrains
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+
+# ==========================================
+# Python & Backend
+# ==========================================
 __pycache__/
 *.py[cod]
 *$py.class
 .venv/
 venv/
+env/
+ENV/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.hypothesis/
 dist/
 build/
 *.egg-info/
+*.egg
+.ipynb_checkpoints/
 
-# Node / Next.js
+# ==========================================
+# Node / Frontend (Vite & React)
+# ==========================================
 node_modules/
+frontend/dist/
+frontend/dist-ssr/
+dist/
+dist-ssr/
+*.local
 .turbo/
 *.tsbuildinfo
 npm-debug.log*
@@ -25,17 +79,35 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Data / artifacts (downloaded corpus files are large, never check in)
+# ==========================================
+# Databases & Local Storage
+# ==========================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+.chroma/
+
+# ==========================================
+# Data, Financial Filings & Large Artifacts
+# ==========================================
 /data/downloads/*
 !/data/downloads/.gitkeep
 *.parquet
+*.pkl
+*.pickle
 
-# IDE / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Logs
+# ==========================================
+# Logs & System Files
+# ==========================================
 *.log
 logs/
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+* - Copy.*
+* - Copy (*).*
