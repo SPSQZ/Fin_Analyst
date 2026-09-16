@@ -62,6 +62,10 @@ build/
 *.egg-info/
 *.egg
 .ipynb_checkpoints/
+backend/alembic/
+backend/alembic.ini
+backend/scripts/
+backend/test_orchestrator.py
 
 # ==========================================
 # Node / Frontend (Vite & React)
@@ -94,6 +98,7 @@ pnpm-debug.log*
 # ==========================================
 /data/downloads/*
 !/data/downloads/.gitkeep
+/data/Markdown/20*/
 *.parquet
 *.pkl
 *.pickle
