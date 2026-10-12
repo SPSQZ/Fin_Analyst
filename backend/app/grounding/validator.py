@@ -7,6 +7,9 @@ from app.database.models.document_chunk import DocumentChunk
 
 logger = logging.getLogger(__name__)
 
+# Grounding trace:
+# This is the final evidence gate. The model can produce many citations, but the app only keeps
+# the ones that are both retrieved and verifiably present in the source chunk text.
 def validate_grounding(
     answer: GroundedAnswer, accessed_chunks: Dict[uuid.UUID, DocumentChunk]
 ) -> GroundedAnswer:

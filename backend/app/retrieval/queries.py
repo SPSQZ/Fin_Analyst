@@ -5,6 +5,10 @@ from app.database.models.document_chunk import DocumentChunk
 from app.database.models.source_document import SourceDocument
 
 
+# Search trace:
+# Dense channel: this query finds content whose embeddings are closest to the user's query.
+# Sparse channel: a second query runs against the PostgreSQL tsvector index.
+# Both lists are later fused with RRF to rank candidates more robustly.
 def semantic_search(
     session: Session, query_embedding: list[float], limit: int = 10, filters=None
 ) -> list[DocumentChunk]:

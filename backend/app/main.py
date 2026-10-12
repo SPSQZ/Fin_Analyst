@@ -9,6 +9,12 @@ from app.auth.dependencies import get_current_user
 from app.chat import router as chat_router
 from app.config import settings
 
+# Runtime bootstrap trace:
+# 1) create FastAPI app
+# 2) install CORS
+# 3) expose minimal health and identity endpoints
+# 4) register chat routes
+# This is the HTTP entrypoint for every frontend request.
 app = FastAPI(title="Document Copilot")
 current_user_dependency = Depends(get_current_user)
 

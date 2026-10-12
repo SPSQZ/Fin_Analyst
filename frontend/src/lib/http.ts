@@ -93,6 +93,9 @@ export async function http<T>(
   return responseBody as T
 }
 
+// Streaming trace:
+// The backend emits SSE chunks like `data: {"type":"text-delta","text":"..."}`.
+// This function reads the response incrementally and dispatches each JSON payload to the UI handler.
 export async function stream(
   path: string,
   body: unknown,

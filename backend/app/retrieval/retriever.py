@@ -15,6 +15,12 @@ from app.retrieval.fusion import reciprocal_rank_fusion
 from app.retrieval.keyword_extraction import extract_keyword_terms, format_terms_for_fts
 from app.retrieval.queries import full_text_search, semantic_search
 
+# Code trace:
+# This file is the retrieval service layer. It turns a user question into a ranked set of
+# SEC passages by combining (1) dense embedding similarity and (2) sparse lexical search,
+# then expanding each top result with immediate chunk neighbors. The output is formatted as
+# source-grounded context for the model to reason over without drifting into unsupported claims.
+
 
 class SearchFilters(BaseModel):
     ticker: str | None = None

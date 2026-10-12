@@ -116,3 +116,9 @@ Desktop.ini
 $RECYCLE.BIN/
 * - Copy.*
 * - Copy (*).*
+# ============
+*.md
+!README.md
+!readme.md
+docs/
+# ============

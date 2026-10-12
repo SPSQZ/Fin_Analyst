@@ -16,6 +16,13 @@ from app.retrieval.keyword_extraction import extract_keyword_terms, format_terms
 from app.retrieval.queries import full_text_search, semantic_search
 from app.retrieval.retriever import embed_query
 
+# Code trace:
+# This module is the policy layer between the user question and the final grounded answer.
+# The agent is not allowed to answer from vague memory; it must retrieve relevant SEC chunks,
+# read the surrounding context it needs, and then emit a citation-backed response schema.
+# The `accessed_chunks` map is the audit trail used later by the validator to confirm that
+# every quoted passage actually came from a document the model touched during the turn.
+
 # Make sure API key is set for Pydantic AI
 os.environ["GEMINI_API_KEY"] = settings.gemini_api_key
 

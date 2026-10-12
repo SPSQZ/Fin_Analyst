@@ -20,12 +20,12 @@ async def process_chat_turn(
     session: Session, thread_id: uuid.UUID, user_text: str
 ) -> AsyncGenerator[str, None]:
     """
-    Orchestrates a single turn of chat with maximum quota efficiency:
-    1. Saves user message.
-    2. Runs hybrid search directly in Python (0 LLM calls for keywords, cached embeddings).
-    3. Feeds pre-retrieved passages into synthesis_agent (exactly 1 LLM call).
-    4. Validates citations against accessed chunks.
-    5. Saves assistant message & citations and yields enriched payload.
+    Code trace for a single user turn:
+    1. Persist the user message.
+    2. Extract keyword terms and run hybrid retrieval without using the LLM.
+    3. Feed retrieved evidence to one synthesis pass.
+    4. Validate citations before saving assistant output.
+    5. Stream final payload and citations back to the UI.
     """
     # 1. Save user message
     from sqlalchemy import func

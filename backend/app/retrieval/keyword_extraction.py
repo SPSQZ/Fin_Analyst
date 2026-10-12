@@ -82,6 +82,10 @@ class ExtractedKeywords(BaseModel):
     )
 
 
+# Retrieval trace:
+# This function turns a natural-language question like "What were Apple's total net sales?"
+# into a compact search bundle such as ["Apple", "total net sales", "fiscal 2024"].
+# The goal is to reduce noise before hybrid retrieval begins.
 def extract_terms_heuristic(
     query: str, min_terms: int = 3, max_terms: int = 5
 ) -> list[str]:

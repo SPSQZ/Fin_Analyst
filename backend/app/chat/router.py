@@ -19,6 +19,10 @@ from app.database.models.message_citation import MessageCitation
 from app.database.models.user import User
 from app.database.session import get_db
 
+# Code trace:
+# This router is the backend API boundary for the user-facing chat experience.
+# It handles thread management, user ownership checks, and the streaming response path
+# that turns retrieved SEC evidence into a UI-friendly answer.
 router = APIRouter(prefix="/chat", tags=["chat"])
 CurrentUser = Annotated[SupabaseUser, Depends(get_current_user)]
 Database = Annotated[Session, Depends(get_db)]

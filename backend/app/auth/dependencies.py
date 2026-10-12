@@ -6,6 +6,12 @@ from supabase_auth.types import User
 
 from app.database.supabase import create_user_client
 
+# Code trace:
+# Every protected API route calls this dependency before doing any work.
+# The request carries a bearer token from the frontend's Supabase session.
+# We validate that token against Supabase, then return the authenticated user object.
+# The result is used by route handlers to scope thread access to the caller's own account.
+
 bearer_scheme = HTTPBearer(auto_error=False)
 
 

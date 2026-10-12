@@ -123,7 +123,9 @@ export function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  // Auto-scroll to bottom of messages viewport on updates
+  // Frontend flow trace:
+  // stream events arrive from the backend and update UI state in real time;
+  // the message list and citation selection are re-rendered as the answer arrives.
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, streamingStatus])
